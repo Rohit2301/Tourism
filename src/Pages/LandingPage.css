@@ -76,3 +76,63 @@ h1 {
   margin: 0;
   color: #666;
 }
+
+/* Existing CSS stays the same, adding styles for new classes */
+.rating {
+  font-weight: bold;
+  color: #ff9800; /* or any color of your choice */
+  font-size: 1.2em;
+  margin-bottom: 8px;
+}
+
+/* Updated styling for tags */
+.tags {
+  color: #fff;
+  border-radius: 20px; /* Adjust border-radius for a rounded shape */
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease; /* Add transition for hover effect */
+}
+
+.ratings-and-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ratings-and-info p {
+  margin-bottom: 5px;
+}
+
+.location {
+  font-style: italic;
+  color: #555;
+}
+
+.reviews {
+  color: #777;
+  font-size: 0.9em;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.show-more-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 12rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.show-more-btn:hover {
+  background-color: #2980b9;
+}

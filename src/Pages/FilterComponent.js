@@ -6,7 +6,9 @@ import "./FilterComponent.css"; // Import CSS file for styling
 const FilterComponent = ({ tags, cities }) => {
   return (
     <div className="filter-container">
-      <h2>Filter Tourist Places</h2>
+      <h2 style={{ textAlign: "center", marginBottom: "35px" }}>
+        Filter Tourist Places
+      </h2>
       <form className="filter-form">
         <div className="form-group">
           <label htmlFor="tag">Tag:</label>
@@ -43,7 +45,9 @@ const FilterComponent = ({ tags, cities }) => {
           </select>
         </div>
 
-        <button type="submit">Apply Filter</button>
+        <button type="submit" style={{ marginTop: "1rem" }}>
+          Apply Filter
+        </button>
       </form>
     </div>
   );

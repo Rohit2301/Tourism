@@ -1,8 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage";
+import Navbar from "./Pages/Navbar";
 import FilterComponent from "./Pages/FilterComponent";
 import "./App.css";
+import FilteredDataPage from "./Pages/FilteredDataPage";
 
 const cityNames = [
   { id: 1, name: "Delhi" },
@@ -17,31 +19,25 @@ const cityNames = [
   { id: 10, name: "Hyderabad" },
 ];
 
-const touristPlaceTags = [
-  "Historical",
-  "Beach",
-  "Cultural",
-  "Adventure",
-  "Nature",
-  "Heritage",
-  "Wildlife",
-  "Mountains",
-  "Religious",
-  "Urban",
-];
+const touristPlaceTags = ["Tourism", "Hangout", "Adventure"];
 
 const App = () => {
   return (
     <>
       <Router>
+        {<Navbar />}
         <Routes>
           <Route path="/" element={<LandingPage />} />
           {/* <Route
-            path="/"
+            path="/advancedSearch"
             element={
               <FilterComponent tags={touristPlaceTags} cities={cityNames} />
             }
           /> */}
+          <Route
+            path="filtered-data/:selectedCity"
+            element={<FilteredDataPage />}
+          />
         </Routes>
       </Router>
     </>
