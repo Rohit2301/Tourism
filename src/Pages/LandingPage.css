@@ -47,6 +47,7 @@ h1 {
 
 .city-card:hover {
   transform: translateY(-5px);
+  cursor: pointer;
 }
 
 .city-card-content {

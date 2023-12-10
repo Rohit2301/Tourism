@@ -5,6 +5,7 @@ import Navbar from "./Pages/Navbar";
 import FilterComponent from "./Pages/FilterComponent";
 import "./App.css";
 import FilteredDataPage from "./Pages/FilteredDataPage";
+import ClusterFilteredPage from "./Pages/ClusterFilteredPage";
 
 const cityNames = [
   { id: 1, name: "Delhi" },
@@ -38,6 +39,7 @@ const App = () => {
             path="filtered-data/:selectedCity"
             element={<FilteredDataPage />}
           />
+          <Route path="/:selectedCluster" element={<ClusterFilteredPage />} />
         </Routes>
       </Router>
     </>

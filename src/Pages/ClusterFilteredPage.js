@@ -1,30 +1,22 @@
+// ClusterFilteredPage.js - New page for displaying filtered data by cluster
+
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import data from "./csvData.json";
 import "./LandingPage.css";
 
-const ITEMS_PER_PAGE = 16; // Number of items to display per page
+const ITEMS_PER_PAGE = 16;
 
-const FilteredDataPage = () => {
+const ClusterFilteredPage = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [displayedItems, setDisplayedItems] = useState(ITEMS_PER_PAGE);
 
   const navigate = useNavigate();
-  const { selectedCity } = useParams(); // Get the selectedCity parameter from the URL
+  const { selectedCluster } = useParams();
 
-  // Function to filter data by selected city
-  const filterDataByCity = (selectedCity) => {
+  const filterDataByCluster = (selectedCluster) => {
     const filteredData = data.filter((item) => {
-      let city = item.country.toLowerCase();
-
-      // Check if the city contains a comma
-      if (city.includes(",")) {
-        city = city.split(",")[0].toLowerCase();
-      } else {
-        city = city.toLowerCase();
-      }
-
-      return city === selectedCity.toLowerCase();
+      return item.cluster === parseInt(selectedCluster, 10);
     });
 
     return filteredData;
@@ -33,8 +25,8 @@ const FilteredDataPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (selectedCity) {
-          const filtered = filterDataByCity(selectedCity);
+        if (selectedCluster) {
+          const filtered = filterDataByCluster(selectedCluster);
           setFilteredData(filtered);
         } else {
           navigate("/");
@@ -43,9 +35,8 @@ const FilteredDataPage = () => {
         console.error("Error fetching or filtering data:", error);
       }
     };
-
-    fetchData(); // Fetch data when component mounts or selectedCity changes
-  }, [selectedCity]); // Re-run effect when selectedCity changes
+    fetchData();
+  }, [selectedCluster]);
 
   const handleShowMore = () => {
     setDisplayedItems(
@@ -59,7 +50,7 @@ const FilteredDataPage = () => {
 
   return (
     <div>
-      <h1 style={{ marginTop: "3rem" }}>Filtered Data for {selectedCity}</h1>
+      <h1 style={{ marginTop: "3rem" }}>Filtered Data </h1>
       <ul>
         <div className="cities-container">
           {filteredData.slice(0, displayedItems).map((item, index) => {
@@ -68,7 +59,6 @@ const FilteredDataPage = () => {
               <div
                 className="city-card"
                 onClick={() => handleCardClick(cluster)}
-                key={index}
               >
                 <div className="city-card-content">
                   <img src={item.image_source} alt={item.name} />
@@ -109,4 +99,4 @@ const FilteredDataPage = () => {
   );
 };
 
-export default FilteredDataPage;
+export default ClusterFilteredPage;

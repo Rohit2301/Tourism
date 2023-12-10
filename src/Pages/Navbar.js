@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 const cityNames = [
   "Delhi",
-  "Gurgaon",
   "Jaipur",
   "Jaisalmer",
   "Jodhpur",
